@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct Address: Identifiable {
     let id = UUID()
     var AddressLine: String
@@ -51,27 +52,62 @@ struct ContentView: View {
                         Text(address.country)
                     }
                 }
+            }
+            .listStyle(InsetGroupedListStyle())
+            .padding(.vertical, 10)
+            .padding(.horizontal, 10)
+            .background(
+                LinearGradient(
+                    colors: [Color.accentColor, Color.accentColor.opacity(0.55)],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            
+            
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .foregroundStyle(.tint)
+            
+            Divider()
                 
-                
-                TextField("Address Line", text: $addressLine)
-                TextField("City", text: $city)
-                TextField("State", text: $state)
-                TextField("Zip", text: $zip)
-                TextField("Country", text: $country)
-                Button("Add Address") {
-                    if (!addressLine.isEmpty && !city.isEmpty && !state.isEmpty && !zip.isEmpty && !country.isEmpty) {
-                        let address = Address(AddressLine: addressLine, city: city, state: state, zip: zip, country: country)
-                        addresses.append(address)
+                VStack(spacing: 10) {
+                    VStack {
+                        TextField("Address Line", text: $addressLine)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                        TextField("City", text: $city)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        TextField("State", text: $state)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        TextField("Zip", text: $zip)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        TextField("Country", text: $country)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                     
                     
-                    
+                        
+                
                 }
-                .buttonStyle(.glassProminent)
+                .padding(20)
+                
+                .foregroundStyle(.tint)
+                    
+            VStack {
+                Button("Add Address") {
+                    if (!addressLine.isEmpty && !city.isEmpty && !state.isEmpty && !zip.isEmpty && !country.isEmpty) {
+                    let address = Address(AddressLine: addressLine, city: city, state: state, zip: zip, country: country)
+                    addresses.append(address)
+                }
             }
+            
+            
+
         }
+        .buttonStyle(.glassProminent)
+                
+                
+            }
         .padding()
     }
 }
