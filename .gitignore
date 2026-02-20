@@ -1,0 +1,9 @@
+
+# xcode-build-server files
+buildServer.json
+.compile
+
+# Local build artifacts
+.build/
+
+.DS_Store

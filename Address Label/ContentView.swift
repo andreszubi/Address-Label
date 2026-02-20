@@ -73,16 +73,15 @@ struct ContentView: View {
                 VStack(spacing: 10) {
                     VStack {
                         TextField("Address Line", text: $addressLine)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                        
+    
                         TextField("City", text: $city)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
                         TextField("State", text: $state)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
                         TextField("Zip", text: $zip)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
                         TextField("Country", text: $country)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
                     }
                     
                     
@@ -98,6 +97,11 @@ struct ContentView: View {
                     if (!addressLine.isEmpty && !city.isEmpty && !state.isEmpty && !zip.isEmpty && !country.isEmpty) {
                     let address = Address(AddressLine: addressLine, city: city, state: state, zip: zip, country: country)
                     addresses.append(address)
+                        addressLine = ""
+                        city = ""
+                        state = ""
+                        zip = ""
+                        country = ""
                 }
             }
             
